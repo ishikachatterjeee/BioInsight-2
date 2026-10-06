@@ -88,6 +88,7 @@ st.set_page_config(
     page_title="BioInsight",
     layout="wide"
 )
+
 st.markdown("""
 <style>
 
@@ -104,12 +105,19 @@ section[data-testid="stSidebar"]{
 
 /* Metric cards */
 [data-testid="metric-container"]{
+/* Metric cards */
+[data-testid="metric-container"]{
     background:white;
     border-radius:20px;
-    padding:25px;
+    padding:18px;
     box-shadow:0px 4px 20px rgba(0,0,0,0.06);
-    min-height:120px;
+    min-height:100px;
     border:1px solid #e2e8f0;
+    transition:0.3s;
+}
+
+[data-testid="metric-container"]:hover{
+    transform:translateY(-4px);
 }
 
 /* Tables */
@@ -176,8 +184,7 @@ and operational insights.
 # ==========================
 # KPI CARDS
 # ==========================
-# First Row
-col1, col2 = st.columns(2)
+col1, col2, col3, col4 = st.columns(4)
 
 with col1:
     st.metric(
@@ -190,9 +197,6 @@ with col2:
         "Average Health Score",
         round(equipment["Health_Score"].mean(), 1)
     )
-
-# Second Row
-col3, col4 = st.columns(2)
 
 with col3:
     st.metric(
@@ -209,12 +213,20 @@ with col4:
         "Total Maintenance Records",
         len(maintenance)
     )
-
 # ==========================
 # DEPARTMENT DISTRIBUTION
 # ==========================
 
-st.divider()
+st.divider()c1, c2, c3 = st.columns(3)
+
+with c1:
+    st.success("🟢 Equipment Availability: 96%")
+
+with c2:
+    st.warning(f"🟡 Calibration Due: {len(due_devices)} Devices")
+
+with c3:
+    st.error(f"🔴 Critical Devices: {len(critical_devices)}")
 
 st.subheader("🏢 Department-wise Equipment Distribution")
 
