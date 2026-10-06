@@ -217,7 +217,9 @@ with col4:
 # DEPARTMENT DISTRIBUTION
 # ==========================
 
-st.divider()c1, c2, c3 = st.columns(3)
+st.divider()
+
+c1, c2, c3 = st.columns(3)
 
 with c1:
     st.success("🟢 Equipment Availability: 96%")
