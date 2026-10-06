@@ -50,3 +50,6 @@ Ishika Chatterjee
 B.Tech Health Science and Technology
 
 VIT Vellore
+
+## Live Demo
+(https://bioinsight.streamlit.app/)
