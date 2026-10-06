@@ -213,11 +213,19 @@ with col4:
         "Total Maintenance Records",
         len(maintenance)
     )
-# ==========================
-# DEPARTMENT DISTRIBUTION
+
+    
+ # ==========================
+# EXECUTIVE SUMMARY
 # ==========================
 
-st.divider()
+critical_devices = equipment[
+    equipment["Condition"] == "Critical"
+]
+
+due_devices = equipment[
+    equipment["Calibration_Due_Days"] < 30
+]
 
 c1, c2, c3 = st.columns(3)
 
@@ -229,6 +237,12 @@ with c2:
 
 with c3:
     st.error(f"🔴 Critical Devices: {len(critical_devices)}")
+
+# ==========================
+# DEPARTMENT DISTRIBUTION
+# ==========================
+
+st.divider()
 
 st.subheader("🏢 Department-wise Equipment Distribution")
 
